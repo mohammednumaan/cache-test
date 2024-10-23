@@ -40,7 +40,7 @@ app.get('/', async (req, res, next) => {
             }
         }
     } catch(err){
-        return res.status(err.cause.status).json({error: err.cause.message});
+        return (err.cause.status) ? res.status(err.cause.status).json({error: err.cause.message}) : res.status(400).json({error: "Bad Request"});
     }
 })
 

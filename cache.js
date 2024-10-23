@@ -12,7 +12,7 @@ class Cache{
         return Date.now() - this.lastUpdatedAt >= this.timeToLive
     }
 
-    // a simple async method to return the cached data if it exists
+    // a simple method to return the cached data if it exists
     // if it doesn't, it simply fetches the data and returns it
     readCache(){
         if (this.#isExpired() || !this.cache){
