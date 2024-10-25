@@ -13,9 +13,10 @@ class Cache{
     }
 
     // a simple method to return the cached data if it exists
-    // if it doesn't, it simply fetches the data and returns it
+    // if it doesn't, it simply returns null
     readCache(){
         if (this.#isExpired() || !this.cache){
+            this.cache = null;
             return null;
         }
         return this.cache;
@@ -30,9 +31,9 @@ class Cache{
 
     // a simple method that resets the cache 
     // (forces the cache to expire)
-    resetCache(){
-        this.cache = null;;
-        this.timeToLive = new Date(0);
+    resetCache(timeToLive){
+        this.cache = null;
+        this.timeToLive = timeToLive ? timeToLive * 60 * 1000 : new Date(0);
     }
 }
 
